@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: key-value-cache
+    ports:
+      - "7171:7171"
+
+    volumes:
+      - .:/app # Mounting the project directory is neccessary bcoz you dont have to keep building again and again ~ Rohit
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7171/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        reservations:
+          memory: 2G       # Minimum 2GB of memory is guaranteed
+          cpus: '2.0'      # Minimum 2 CPU core is guaranteed
+        limits:
+          memory: 2G       # Maximum 2GB of memory is allowed
+          cpus: '2.0'      # Maximum 2 CPU cores are allowed
