@@ -131,11 +131,3 @@ curl 'http://127.0.0.1:7171/health'
 
 - **404 Not Found**: Returned if the requested key does not exist in the cache.
 - **400 Bad Request**: Returned if the key or value is too long (limit: 256 characters).
-
-## License Information
-
-This project is distributed under the MIT License. Refer to the [LICENSE](LICENSE) file for more details.
-
----
-
-Let me know if you want to include examples, Dockerfile info, or testing instructions too!
